@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Named palette as CSS variables (mirrors tailwind.config.ts).
+ * Single source of truth for any value used outside Tailwind utilities.
+ */
+:root {
+  /* Tiefsee / Atlantik */
+  --abyss: #0a1a24;
+  --deep: #0e2532;
+  --ocean: #143a4c;
+  --tide: #1e5267;
+  --mist: #a9c2cc;
+
+  /* Bernstein / Gold */
+  --amber-bright: #f0ce7d;
+  --amber-gold: #e0ae55;
+  --amber: #c98a2e;
+  --amber-ember: #a56a1c;
+
+  /* Off-White */
+  --paper: #f7f1e6;
+  --sand: #ece1cc;
+  --ink: #13242e;
+
+  --selection-bg: rgba(224, 174, 85, 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--abyss);
+    color: var(--paper);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+    color: var(--paper);
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--amber-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif), Georgia, serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Eyebrow / kicker label */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-eyebrow text-amber-gold;
+  }
+
+  /* Generous section rhythm */
+  .section {
+    @apply px-6 py-24 sm:px-8 md:py-32;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-shell;
+  }
+
+  /* Thin amber hairline used as a quiet divider */
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-amber-gold/40 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal: dezent, performant, respektiert prefers-reduced-motion */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.is-visible {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+}
