@@ -50,12 +50,15 @@ export function Header({ locale, dict }: HeaderProps) {
 
         <div className="flex items-center gap-3 sm:gap-5">
           <LanguageSwitcher locale={locale} dict={dict} />
+          {/* Primary CTA stays visible at every breakpoint — the purchase path
+              must never disappear on mobile. Compact label on phones, full on sm+. */}
           <a
             href={amazonLinkFor(locale)}
             aria-label={dict.cta.amazonAria}
-            className="hidden rounded-full bg-amber-gold px-5 py-2 text-sm font-semibold text-abyss transition-colors duration-300 ease-calm hover:bg-amber-bright sm:inline-flex"
+            className="inline-flex items-center rounded-full bg-amber-gold px-4 py-2 text-sm font-semibold text-abyss transition-colors duration-300 ease-calm hover:bg-amber-bright sm:px-5"
           >
-            {dict.cta.amazon}
+            <span className="sm:hidden">{dict.cta.amazonShort}</span>
+            <span className="hidden sm:inline">{dict.cta.amazon}</span>
           </a>
         </div>
       </div>

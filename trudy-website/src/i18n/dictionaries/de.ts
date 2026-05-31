@@ -17,6 +17,7 @@ const de: Dictionary = {
   },
   cta: {
     amazon: "Bei Amazon kaufen",
+    amazonShort: "Kaufen",
     bod: "Bei BoD bestellen",
     amazonAria: "TRUDY bei Amazon kaufen",
     bodAria: "TRUDY im BoD-Shop bestellen",

@@ -18,6 +18,7 @@ export type Dictionary = {
   };
   cta: {
     amazon: string;
+    amazonShort: string;
     bod: string;
     amazonAria: string;
     bodAria: string;
