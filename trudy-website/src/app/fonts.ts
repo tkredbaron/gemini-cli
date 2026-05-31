@@ -9,8 +9,9 @@ export const fontSerif = Fraunces({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif",
+  // Fraunces is a variable font: omit `weight` so the full range loads, which
+  // is what enables the optical-size (`opsz`) axis below.
   axes: ["opsz"],
-  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
