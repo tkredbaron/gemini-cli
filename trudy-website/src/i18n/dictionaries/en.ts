@@ -118,6 +118,30 @@ const en: Dictionary = {
     closingBody:
       "Two ways to the book. Choose whichever suits you — the story is the same.",
   },
+  images: {
+    creditPlaceholder: "[Image credit]",
+    archiveLabel: "From the archive",
+    junior: {
+      alt: "A young Trudy Ederle, photographed after winning the 220-yard swim at the City Athletic Club",
+      caption: "“Junior National Trudy” — after the 220-yard win.",
+    },
+    parade: {
+      alt: "Dense crowd at the ticker-tape parade on Broadway honouring Trudy Ederle, 1926",
+      caption: "Two million shouted: “Welcome home, Trudy.” Broadway, 1926.",
+    },
+    trainer: {
+      alt: "Trudy Ederle in her swimsuit with a companion after a competition",
+      caption: "Out of the water — a quiet moment.",
+    },
+    group: {
+      alt: "Trudy Ederle with companions and a shepherd dog at the beach",
+      caption: "At the shore, between the stages.",
+    },
+    street: {
+      alt: "Trudy Ederle with her swimming team out in the city",
+      caption: "On the move, in the public eye.",
+    },
+  },
   footer: {
     claim: "Triumph. Silence. Life.",
     book: "TRUDY",

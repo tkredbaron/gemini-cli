@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { MotifBand } from "@/components/MotifBand";
 import { TheMoment } from "@/components/TheMoment";
 import { Pillars } from "@/components/Pillars";
+import { ParadeBand } from "@/components/ParadeBand";
 import { WhyThisBook } from "@/components/WhyThisBook";
 import { AboutAuthor } from "@/components/AboutAuthor";
 import { BuyDetails } from "@/components/BuyDetails";
@@ -22,6 +23,7 @@ export default function Home({ params }: { params: { locale: string } }) {
       <TheMoment dict={dict} />
       <MotifBand dict={dict} />
       <Pillars dict={dict} />
+      <ParadeBand dict={dict} />
       <WhyThisBook dict={dict} />
       <AboutAuthor dict={dict} />
       <BuyDetails locale={locale} dict={dict} />

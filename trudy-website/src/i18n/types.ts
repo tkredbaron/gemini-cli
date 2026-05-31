@@ -71,6 +71,18 @@ export type Dictionary = {
     closingTitle: string;
     closingBody: string;
   };
+  images: {
+    /** Shared credit line; replace the bracket with the real source per photo. */
+    creditPlaceholder: string;
+    /** Small label over the archive photo row. */
+    archiveLabel: string;
+    /** alt = accessibility text, caption = visible figure caption. */
+    junior: { alt: string; caption: string };
+    parade: { alt: string; caption: string };
+    trainer: { alt: string; caption: string };
+    group: { alt: string; caption: string };
+    street: { alt: string; caption: string };
+  };
   footer: {
     claim: string;
     book: string;

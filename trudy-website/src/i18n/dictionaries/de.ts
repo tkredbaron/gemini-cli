@@ -118,6 +118,30 @@ const de: Dictionary = {
     closingBody:
       "Zwei Wege zum Buch. Wählen Sie, was Ihnen näher liegt — die Geschichte ist dieselbe.",
   },
+  images: {
+    creditPlaceholder: "[Bildnachweis]",
+    archiveLabel: "Aus dem Archiv",
+    junior: {
+      alt: "Die junge Trudy Ederle, aufgenommen nach ihrem Sieg über 220 Yards im City Athletic Club",
+      caption: "„Junior National Trudy“ — nach dem 220-Yards-Sieg.",
+    },
+    parade: {
+      alt: "Dichte Menschenmenge bei der Ticker-Tape-Parade am Broadway zu Ehren Trudy Ederles, 1926",
+      caption: "Zwei Millionen riefen: „Welcome home, Trudy.“ Broadway, 1926.",
+    },
+    trainer: {
+      alt: "Trudy Ederle im Badeanzug mit Begleiter nach einem Wettkampf",
+      caption: "Nach dem Wasser — ein Moment Ruhe.",
+    },
+    group: {
+      alt: "Trudy Ederle mit Weggefährten und einem Schäferhund am Strand",
+      caption: "Am Strand, zwischen den Etappen.",
+    },
+    street: {
+      alt: "Trudy Ederle mit ihrem Schwimmteam unterwegs in der Stadt",
+      caption: "Unterwegs, im Blick der Öffentlichkeit.",
+    },
+  },
   footer: {
     claim: "Triumph. Stille. Leben.",
     book: "TRUDY",
