@@ -14,6 +14,7 @@ export type Dictionary = {
     why: string;
     author: string;
     buy: string;
+    menu: string;
     skipToContent: string;
   };
   cta: {

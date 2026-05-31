@@ -8,6 +8,8 @@ type ScrollRevealProps = {
   as?: ElementType;
   /** Stagger delay in milliseconds. */
   delay?: number;
+  /** "up" = subtle fade/rise (body), "clip" = top-down wipe (headlines). */
+  variant?: "up" | "clip";
   className?: string;
 };
 
@@ -20,9 +22,11 @@ export function ScrollReveal({
   children,
   as,
   delay = 0,
+  variant = "up",
   className = "",
 }: ScrollRevealProps) {
   const Tag = (as ?? "div") as ElementType;
+  const base = variant === "clip" ? "reveal-clip" : "reveal";
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -55,7 +59,7 @@ export function ScrollReveal({
   return (
     <Tag
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`.trim()}
+      className={`${base} ${visible ? "is-visible" : ""} ${className}`.trim()}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

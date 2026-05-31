@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/i18n/types";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SectionHeading } from "@/components/SectionHeading";
 
 /**
  * Self-identification section. Three reader stances (not demographics) so the
@@ -10,14 +11,15 @@ export function WhyThisBook({ dict }: { dict: Dictionary }) {
   return (
     <section id="warum" className="section scroll-mt-20 bg-paper text-ink" aria-labelledby="why-heading">
       <div className="shell">
-        <ScrollReveal className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-eyebrow text-amber-ember">
-            {dict.why.kicker}
-          </p>
-          <h2 id="why-heading" className="mt-4 font-serif text-h2 font-medium text-ink">
-            {dict.why.heading}
-          </h2>
-          <p className="mt-5 text-lede text-ink/70">{dict.why.lede}</p>
+        <SectionHeading
+          kicker={dict.why.kicker}
+          heading={dict.why.heading}
+          id="why-heading"
+          tone="light"
+          className="max-w-2xl"
+        />
+        <ScrollReveal delay={120}>
+          <p className="mt-5 max-w-2xl text-lede text-ink/70">{dict.why.lede}</p>
         </ScrollReveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">

@@ -13,6 +13,7 @@ const de: Dictionary = {
     why: "Warum dieses Buch",
     author: "Der Autor",
     buy: "Kaufen",
+    menu: "Menü",
     skipToContent: "Zum Inhalt springen",
   },
   cta: {

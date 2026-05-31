@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SectionHeading } from "@/components/SectionHeading";
 import { CtaButtons } from "@/components/CtaButtons";
 
 type BuyDetailsProps = {
@@ -17,22 +18,21 @@ export function BuyDetails({ locale, dict }: BuyDetailsProps) {
     <section id="kaufen" className="section scroll-mt-20 bg-deep" aria-labelledby="buy-heading">
       <div className="shell grid gap-14 lg:grid-cols-2 lg:gap-20">
         {/* Eckdaten */}
-        <ScrollReveal>
-          <p className="eyebrow">{dict.buy.kicker}</p>
-          <h2 id="buy-heading" className="mt-4 font-serif text-h2 font-medium text-paper">
-            {dict.buy.heading}
-          </h2>
-          <p className="mt-4 text-lede text-amber-gold">{dict.buy.lede}</p>
+        <div>
+          <SectionHeading kicker={dict.buy.kicker} heading={dict.buy.heading} id="buy-heading" />
+          <ScrollReveal delay={120}>
+            <p className="mt-4 text-lede text-amber-gold">{dict.buy.lede}</p>
 
-          <dl className="mt-10 divide-y divide-amber-gold/15 border-t border-amber-gold/15">
-            {dict.buy.facts.map((fact) => (
-              <div key={fact.label} className="flex items-baseline justify-between gap-6 py-3.5">
-                <dt className="text-sm uppercase tracking-wide text-mist">{fact.label}</dt>
-                <dd className="text-right font-medium text-paper">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </ScrollReveal>
+            <dl className="mt-10 divide-y divide-amber-gold/15 border-t border-amber-gold/15">
+              {dict.buy.facts.map((fact) => (
+                <div key={fact.label} className="flex items-baseline justify-between gap-6 py-3.5">
+                  <dt className="text-sm uppercase tracking-wide text-mist">{fact.label}</dt>
+                  <dd className="text-right font-medium text-paper">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </ScrollReveal>
+        </div>
 
         {/* Finaler Kaufblock */}
         <ScrollReveal delay={90} className="lg:pl-4">

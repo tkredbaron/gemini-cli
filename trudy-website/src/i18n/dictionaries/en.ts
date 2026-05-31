@@ -13,6 +13,7 @@ const en: Dictionary = {
     why: "Why this book",
     author: "The Author",
     buy: "Buy",
+    menu: "Menu",
     skipToContent: "Skip to content",
   },
   cta: {

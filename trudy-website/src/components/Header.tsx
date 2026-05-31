@@ -11,8 +11,10 @@ type HeaderProps = {
 
 /**
  * Sticky header keeps the primary CTA within reach at every scroll position —
- * the lowest-friction path to purchase. Server component; only the language
- * switcher hydrates on the client.
+ * the lowest-friction path to purchase. The primary CTA is visible at every
+ * breakpoint; section navigation is a full bar on lg and a no-JS <details>
+ * disclosure menu below it (designed for mobile, not hidden). Server component;
+ * only the language switcher hydrates.
  */
 export function Header({ locale, dict }: HeaderProps) {
   const navLinks = [
@@ -20,6 +22,7 @@ export function Header({ locale, dict }: HeaderProps) {
     { href: `/${locale}#saeulen`, label: dict.nav.pillars },
     { href: `/${locale}#warum`, label: dict.nav.why },
     { href: `/${locale}#autor`, label: dict.nav.author },
+    { href: `/${locale}#kaufen`, label: dict.nav.buy },
   ];
 
   return (
@@ -37,7 +40,7 @@ export function Header({ locale, dict }: HeaderProps) {
           aria-label={locale === "de" ? "Hauptnavigation" : "Main navigation"}
           className="hidden items-center gap-7 lg:flex"
         >
-          {navLinks.map((link) => (
+          {navLinks.slice(0, 4).map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -48,10 +51,10 @@ export function Header({ locale, dict }: HeaderProps) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center gap-3 sm:gap-4">
           <LanguageSwitcher locale={locale} dict={dict} />
-          {/* Primary CTA stays visible at every breakpoint — the purchase path
-              must never disappear on mobile. Compact label on phones, full on sm+. */}
+
+          {/* Primary CTA — visible at every breakpoint, compact on phones */}
           <a
             href={amazonLinkFor(locale)}
             aria-label={dict.cta.amazonAria}
@@ -60,6 +63,34 @@ export function Header({ locale, dict }: HeaderProps) {
             <span className="sm:hidden">{dict.cta.amazonShort}</span>
             <span className="hidden sm:inline">{dict.cta.amazon}</span>
           </a>
+
+          {/* Mobile section menu — native <details>, zero client JS */}
+          <details className="relative lg:hidden">
+            <summary
+              aria-label={dict.nav.menu}
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-amber-gold/25 text-paper transition-colors hover:bg-amber-gold/10"
+            >
+              <span aria-hidden="true" className="flex flex-col gap-[3px]">
+                <span className="block h-px w-4 bg-current" />
+                <span className="block h-px w-4 bg-current" />
+                <span className="block h-px w-4 bg-current" />
+              </span>
+            </summary>
+            <nav
+              aria-label={dict.nav.menu}
+              className="absolute right-0 z-50 mt-3 w-56 rounded-xl border border-amber-gold/20 bg-deep p-2 shadow-lift"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block rounded-lg px-4 py-2.5 text-sm text-mist transition-colors hover:bg-amber-gold/10 hover:text-paper"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </details>
         </div>
       </div>
     </header>

@@ -72,6 +72,14 @@
   p {
     text-wrap: pretty;
   }
+
+  /* No-JS <details> menus (mobile nav): remove the default disclosure marker. */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @layer components {
@@ -111,12 +119,78 @@
     transform: none;
   }
 
+  /* Clip/wipe reveal — for headlines. A top-down wipe reads more crafted than
+     a plain fade-up; this is the "motion that whispers" upgrade. */
+  .reveal-clip {
+    clip-path: inset(0 0 105% 0);
+    opacity: 0;
+    transition:
+      clip-path 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.6s ease;
+    will-change: clip-path;
+  }
+
+  .reveal-clip.is-visible {
+    clip-path: inset(0 0 -5% 0);
+    opacity: 1;
+  }
+
+  /* One-time, orchestrated hero entrance — CSS-only, runs on load.
+     Stagger via inline animation-delay (see Hero). */
+  .enter {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: enter-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes enter-up {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Hero goggle-glow drifts almost imperceptibly — atmosphere, not animation. */
+  .glow-drift {
+    animation: glow-drift 16s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-drift {
+    from {
+      transform: translate3d(-2%, -1%, 0) scale(1);
+      opacity: 0.8;
+    }
+    to {
+      transform: translate3d(2%, 1.5%, 0) scale(1.07);
+      opacity: 1;
+    }
+  }
+
+  /* Hide horizontal scrollbar on the mobile pillar carousel (still scrollable). */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .reveal,
-    .reveal.is-visible {
+    .reveal.is-visible,
+    .reveal-clip,
+    .reveal-clip.is-visible {
       opacity: 1 !important;
       transform: none !important;
+      clip-path: none !important;
       transition: none !important;
+    }
+    .enter {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .glow-drift {
+      animation: none !important;
     }
   }
 }
